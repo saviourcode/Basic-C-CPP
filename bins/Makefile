@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -o
 
-SRCS_DIR = ../srcs
+SRCS_DIR = ../srcs/CPP
 OBJS_DIR = ../objs
 # MakeFile is stored inside the "bins" directory.
 BINS_DIR = ./
