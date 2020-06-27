@@ -39,9 +39,10 @@ typedef struct time {
 } time;
 
 person initperson(const char *[],int,const char *[],int);
+void intersection_meeting_time(person*,person*);
 void cal_free_time(person *); 
 time conv_time(char *);
-void add_elm_free_time(time,time,person*);
+void verify_add_elm_free_time(time,time,person*);
 void calloc_new_elm(time,person*);
 void realloc_new_elm(time,person*);
 
@@ -58,7 +59,8 @@ int main()
 
     cal_free_time(&p1);
     cal_free_time(&p2);
-
+    
+    intersection_meeting_time(&p1,&p2);
 
 }
 
@@ -76,6 +78,56 @@ person initperson(const char *pm[], int npm, const char *pib[], int npib)
     return p;
 }
 
+void intersection_meeting_time(person *p1, person *p2)
+{   
+    time t1,t2,tu,td;
+    person r;
+    r = PARAMINIT(NULL,NULL)
+    int count = (p1->freetime_len <= p2->freetime_len) ? p1->freetime_len/2 : p2->freetime_len/2;
+    printf("Interator = %d\n",count);
+
+    for(int i=0;i<count;i++){
+        t1 = CONVTIME(p1->freetime_ptr[2*i])
+        t2 = CONVTIME(p2->freetime_ptr[2*i])
+        if((t1.hour*60+t1.minute) <= (t2.hour*60+t2.minute)){
+            tu = t2;
+            t1 = CONVTIME(p1->freetime_ptr[2*i+1])
+            t2 = CONVTIME(p2->freetime_ptr[2*i+1])
+
+            if((t1.hour*60+t1.minute) <= (t2.hour*60+t2.minute)){
+                td = t1;
+            }
+            else{
+                td = t2;
+            }
+
+            verify_add_elm_free_time(tu,td,&r); 
+        }
+        else{
+            tu = t1;
+            t1 = CONVTIME(p1->freetime_ptr[2*i+1])
+            t2 = CONVTIME(p2->freetime_ptr[2*i+1])
+
+            if((t1.hour*60+t1.minute) <= (t2.hour*60+t2.minute)){
+                td = t1;
+            }
+            else{
+                td = t2;
+            }
+
+            verify_add_elm_free_time(tu,td,&r);
+
+        }
+    }
+
+    printf("\n\t\tFree Time Heap: { ");
+    for(int i=0;i<r.freetime_len;i++){
+        printf("%s ",r.freetime_ptr[i]);
+    }
+    printf("}\n\n");
+
+}
+
 void cal_free_time(person *p)
 {
     time t1,t2;
@@ -83,19 +135,19 @@ void cal_free_time(person *p)
     t1 = CONVTIME(p->inbound_ptr[0])
     t2 = CONVTIME(p->meeting_ptr[0])
    
-    add_elm_free_time(t1,t2,p);
+    verify_add_elm_free_time(t1,t2,p);
 
     for(int i=0;i<p->meeting_len/2-1;i++){
         t1 = CONVTIME(p->meeting_ptr[2*i+1])
         t2 = CONVTIME(p->meeting_ptr[2*i+2])
 
-        add_elm_free_time(t1,t2,p);
+        verify_add_elm_free_time(t1,t2,p);
     }
 
     t1 = CONVTIME(p->meeting_ptr[p->meeting_len-1])
     t2 = CONVTIME(p->inbound_ptr[1])
 
-    add_elm_free_time(t1,t2,p);
+    verify_add_elm_free_time(t1,t2,p);
 
     printf("\n\t\tFree Time Heap: { ");
     for(int i=0;i<p->freetime_len;i++){
@@ -114,7 +166,7 @@ time conv_time(char *end)
     return t;
 }
 
-void add_elm_free_time(time t1,time t2, person *p)
+void verify_add_elm_free_time(time t1,time t2, person *p)
 {
     if((t2.hour*60+t2.minute)-(t1.hour*60+t1.minute)>=MEETING_INTERVAL){
         printf("New Element\n");
