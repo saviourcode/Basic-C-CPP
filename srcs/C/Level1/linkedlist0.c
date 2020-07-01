@@ -1,3 +1,10 @@
+/* Reference of this code is taken from: http://cslibrary.stanford.edu/103/LinkedListBasics.pdf
+ * What works? 
+ *  1. Pushing elements to the head of the list
+ *  2. Appending elements to the tail of the list
+ *  3. Copying one list to other list
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
