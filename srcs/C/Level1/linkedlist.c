@@ -1,8 +1,5 @@
 #include <stdlib.h>
-#include <stdio.h>
-#define CC(x) sourabh##x();
-
-void 
+#include <stdio.h> 
 
 struct node {
     int value;
@@ -30,14 +27,8 @@ node_t *create_new_node(int value) {
     return result;
 }
 
-int sourabhb()
-{
-    printf("ok");
-}
-
 int main()
 {
-    CC(b)
     node_t *head;
     node_t *tmp;
     
