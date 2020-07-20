@@ -26,6 +26,7 @@ int main(void)
     string result = BLANK;
     char c;
     printf("Enter the name: ");
+    // Scan the input from the User.
     while((c=getchar())!='\n' && c!=EOF){
         append(&result,c);
     }
