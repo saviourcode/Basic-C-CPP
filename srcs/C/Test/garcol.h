@@ -1,5 +1,5 @@
-#ifndef _LIBGARCOL_H_
-#define _LIBGARCOL_H_
+#ifndef _LIBGARCOL_H
+#define _LIBGARCOL_H
 #include "strobj.h"
 
 void mon_allocShadow(void) __attribute__((constructor));

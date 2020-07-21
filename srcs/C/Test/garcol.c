@@ -1,8 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "garcol.h"
 
 string **shadowTable = NULL;
 
-static int unqID=0;
+static size_t unqID=0;
 
 void mon_allocShadow(void)
 {
@@ -10,21 +12,18 @@ void mon_allocShadow(void)
         shadowTable = (string **)malloc(sizeof(string*));
     else
         shadowTable = (string **)realloc(shadowTable,(unqID+1)*sizeof(string*));
+    //printf("size of ST%ld\n",sizeof(shadowTable));
 }
 
 void mon_freeShadow(void)
 {
-    for(int i=0;i<unqID;i++){
-        printf("Freeing\n");
+    for(size_t i=0;i<unqID;i++){
         free(shadowTable[i]->str);
         shadowTable[i]->str = NULL;
         shadowTable[i]->size = 0;
     }
     free(shadowTable);
     shadowTable = NULL;
-
-    printf("In FreeShadow: %s\n",shadowTable[1]->str);
-    printf("Done\n");
 }
 
 void add_shadowEntry(string* p)

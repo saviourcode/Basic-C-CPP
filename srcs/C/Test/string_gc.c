@@ -1,13 +1,13 @@
+#include <stdio.h>
 #include "strobj.h"
 
 int main(void)
 {
     String result = BLANK;
-    String new = BLANK;
+    
+    scanStr(&result);
 
-    append(&result,66);
-
-    append(&new,65);
+    printf("%s %ld\n",result.str,result.size);
     
     return 0;
 }

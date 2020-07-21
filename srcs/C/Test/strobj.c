@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "strobj.h"
 
 void append(string* p,char c)
@@ -13,9 +15,6 @@ void append(string* p,char c)
     *(p->str+p->size) = c;
     *(p->str+p->size+1) = '\0';
     p->size++;
-
-    printf("p = %s %p %d\n",p->str,p->str,p->size);
-    //printf("shadowTable = %s %p %d\n",shadowTable[unqID-1]->str,shadowTable[unqID-1]->str,shadowTable[unqID-1]->size);
 }
 
 void appendStr(string* p,char* s)
