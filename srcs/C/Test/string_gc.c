@@ -1,3 +1,6 @@
+/*
+    Reference: https://github.com/saviourcode/ooc
+*/
 #include <stdio.h>
 #include "strobj.h"
 
@@ -5,7 +8,7 @@ int main(void)
 {
     String result = BLANK;
     
-    scanStr(&result);
+    appendStr(&result,"Hello, World");
 
     printf("%s %ld\n",result.str,result.size);
     

@@ -2,7 +2,7 @@
 #define _LIBSTROBJ_H
 
 #ifndef _STDIO_H
-#error Add first " #include<stdio.h> " to the source code then add " #include "strobj.h" "
+#error Add first +++[#include<stdio.h>] to the source code then add +++[#include "strobj.h"]
 #elif defined _STDIO_H
 #define BLANK {NULL,0}
 #endif

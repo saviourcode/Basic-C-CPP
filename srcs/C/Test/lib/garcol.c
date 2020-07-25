@@ -12,7 +12,6 @@ void mon_allocShadow(void)
         shadowTable = (string **)malloc(sizeof(string*));
     else
         shadowTable = (string **)realloc(shadowTable,(unqID+1)*sizeof(string*));
-    //printf("size of ST%ld\n",sizeof(shadowTable));
 }
 
 void mon_freeShadow(void)
