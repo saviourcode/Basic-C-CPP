@@ -6,33 +6,38 @@
 */
 #include <stdio.h>
 
-int removeDuplicates(int* nums, int numsSize){
+int removeDuplicates(int* nums,int* newnums, int numsSize){
     if(numsSize==0){
         return 0;
     }
-    int temp;
-    int len=1;
-    temp=*(nums+0);
-    for(int i=1;i<numsSize;i++){
-        if(temp!=*(nums+i)){
-            temp=*(nums+i);
-            *(nums+(len))=temp;
-            len++;
+
+    int count = 0;
+    
+    for(int i=0;i<numsSize;i++){
+        int flag = 0;
+        for(int j=0;j<count;j++){
+            if(nums[i]==newnums[j]){
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 0){
+            newnums[count++] = nums[i];
         }
     }
 
-    return len;
+    return count;
 }
 
 int main(void)
 {
-    int ar[] = {};
+    int ar[] = {1,2,1,2,1,1,3};
     int n = sizeof(ar)/sizeof(ar[0]);
-
-    int len = removeDuplicates(ar,n);
+    int newar[n];
+    int len = removeDuplicates(ar,newar,n);
     printf("len=%d\n",len);
     for(int i=0;i<len;i++){
-        printf("%d ",ar[i]);
+        printf("%d ",newar[i]);
     }
     printf("\n");
     return 0;
