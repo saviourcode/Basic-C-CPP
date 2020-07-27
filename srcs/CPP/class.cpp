@@ -4,7 +4,7 @@ using namespace std;
 
 class person
 {
-    char name[30];
+    char name[3];
     int age;
 
     public:
@@ -29,6 +29,7 @@ void person :: showdata(void)
 int main()
 {
     person p;
+    p.showdata();
     p.getdata();
     p.showdata();
 
