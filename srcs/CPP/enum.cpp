@@ -1,7 +1,6 @@
 #include <iostream>
 
 enum shape1{circle,square,rectangle};
-enum shape2{circle,square,rectangle};
 
 int main(void)
 {
