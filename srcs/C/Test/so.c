@@ -1,12 +1,23 @@
-#include <stdio.h>
-
-int main(void){
-    char first[20];
-    char last[20];
-    printf("Enter first name: ");
-    scanf("%s", first);
-    printf("Enter last name: ");
-    scanf("%s", last);
-    printf("Hello %-60s %-60s. \n", first, last);
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int a,i;
+    printf("\nEnter the number of names you want :");
+    scanf("%d",&a);
+    char c;
+    scanf("%c",&c);
+    char names[50][50];
+    for(i=0;i<a;i++)
+    {
+        printf("\n%d name :",i);
+        gets(names[i]);
+    }
+    printf("\nThe required name lists :");
+    for(int i=0;i<a;i++)
+    {
+    printf("\n%d name :",i+1);
+    puts(names[i]);
+    }
     return 0;
 }
