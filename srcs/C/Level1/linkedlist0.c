@@ -78,8 +78,7 @@ void append(node ** head, int value)
             currentPtr = currentPtr->next;
         }
         currentPtr->next = newNode;
-    }
-    
+    } 
 }
 
 node * copylist(node * head)
